@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Global Shipping Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Pricing Page Specific Styles */
+        .pricing-banner {
+            height: 350px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('image/IMG-20250416-WA0049.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .pricing-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .pricing-banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .pricing-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .pricing-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pricing-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-intro h2 {
+            font-size: 2.4rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .toggle-label {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin: 0 1rem;
+        }
+
+        .toggle-btn {
+            width: 60px;
+            height: 30px;
+            background-color: #3498db;
+            border-radius: 30px;
+            padding: 5px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;          
+            background-color: white;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.yearly::before {
+            left: 34px;
+        }
+
+        .toggle-active {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-card.popular {
+            border-top: 5px solid #3498db;
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -32px;
+            background: #3498db;
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+
+        .pricing-header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .pricing-price .currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .pricing-price .period {
+            font-size: 1rem;
+            color: #7f8c8d;
+            font-weight: normal;
+        }
+
+        .pricing-description {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-body {
+            padding: 2rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f1f1f1;
+            color: #7f8c8d;
+        }
+
+        .pricing-features li i {
+            margin-right: 0.8rem;
+            color: #2ecc71;
+        }
+
+        .pricing-features li i.fa-times {
+            color: #e74c3c;
+        }
+
+        .pricing-button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-quote {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .custom-quote h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .custom-quote p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .custom-quote-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: white;
+            color: #3498db;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .custom-quote-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-table {
+            margin-top: 5rem;
+            overflow-x: auto;
+        }
+
+        .pricing-table h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-table {
+            margin-top: 5rem;
+            overflow-x: auto;
+        }
+
+        .pricing-table h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        .table-container {
+            width: 100%;
+            min-width: 700px;
+            border-collapse: collapse;
+            margin-bottom: 3rem;
+        }
+
+        .table-container th {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .table-container td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #f1f1f1;
+            color: #7f8c8d;
+        }
+
+        .table-container tr:hover td {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+
+        .table-check {
+            color: #2ecc71;
+            font-size: 1.2rem;
+        }
+
+        .table-times {
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+
+        .faq-section {
+            margin-top: 5rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .faq-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .faq-img img {
+            max-width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-img img:hover {
+            transform: scale(1.03);
+        }
+
+        .faq-content h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 992px) {
+            .faq-section {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .faq-section {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+            
+            .faq-img {
+                margin-bottom: 2rem;
+            }
+        }
+
+        .faq-section h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        /* Add CSS for rates content */
+        .rates-content {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            padding: 2rem;
+        }
+        
+        .rates-table {
+            overflow-x: auto;
+        }
+        
+        .rates-image {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .rates-image img {
+            width: 100%;
+            max-height: 280px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .rates-image img:hover {
+            transform: scale(1.03);
+        }
+        
+        .rates-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .rates-note {
+            text-align: center;
+            color: #7f8c8d;
+            margin-top: 1rem;
+            margin-bottom: 0;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        
+        .table-container {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .table-container th {
+            background-color: #3498db;
+            color: white;
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+        }
+        
+        .table-container td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .table-container tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .table-container tr:nth-child(even) {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .table-container tr:hover td {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        @media (max-width: 992px) {
+            .rates-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .rates-content {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+            
+            .rates-image {
+                margin-bottom: 2rem;
+            }
+            
+            .rates-badge {
+                top: -10px;
+                right: -10px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <nav>
+            <div class="logo">
+                <i class="fas fa-globe-americas logo-icon"></i>
+                <h1>Global Shipping</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="pricing-banner">
+            <div class="banner-content">
+                <h1>Transparent Pricing</h1>
+                <p>Flexible shipping solutions tailored to your business needs with competitive rates and no hidden fees.</p>
+            </div>
+        </section>
+
+        <section class="pricing-section">
+            <div class="pricing-wrapper">
+                <div class="pricing-intro">
+                    <h2>Choose Your Shipping Plan</h2>
+                    <p>We offer a range of pricing options to accommodate businesses of all sizes. Whether you're a small startup or a multinational corporation, we have a plan that fits your shipping needs and budget.</p>
+                </div>
+
+                <div class="pricing-toggle">
+                    <span class="toggle-label toggle-active" id="monthly-label">Monthly</span>
+                    <div class="toggle-btn" id="pricing-toggle"></div>
+                    <span class="toggle-label" id="yearly-label">Yearly <span style="color: #3498db; font-size: 0.9rem; font-weight: 600;">(Save 20%)</span></span>
+                </div>
+
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">Basic</h3>
+                            <div class="pricing-price" id="basic-price">
+                                <span class="currency">$</span>199<span class="period">/month</span>
+                            </div>
+                            <p class="pricing-description">Perfect for small businesses with occasional shipping needs</p>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Up to 10 shipments per month</li>
+                                <li><i class="fas fa-check"></i> Standard tracking</li>
+                                <li><i class="fas fa-check"></i> Basic customs documentation</li>
+                                <li><i class="fas fa-check"></i> Email support</li>
+                                <li><i class="fas fa-times"></i> Priority handling</li>
+                                <li><i class="fas fa-times"></i> Dedicated account manager</li>
+                                <li><i class="fas fa-times"></i> API integration</li>
+                            </ul>
+                            <a href="contact.html" class="pricing-button">Get Started</a>
+                        </div>
+                    </div>
+
+                    <div class="pricing-card popular">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">Business</h3>
+                            <div class="pricing-price" id="business-price">
+                                <span class="currency">$</span>499<span class="period">/month</span>
+                            </div>
+                            <p class="pricing-description">Ideal for growing businesses with regular shipping needs</p>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Up to 50 shipments per month</li>
+                                <li><i class="fas fa-check"></i> Advanced real-time tracking</li>
+                                <li><i class="fas fa-check"></i> Full customs documentation</li>
+                                <li><i class="fas fa-check"></i> Priority email & phone support</li>
+                                <li><i class="fas fa-check"></i> Priority handling</li>
+                                <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                                <li><i class="fas fa-times"></i> API integration</li>
+                            </ul>
+                            <a href="contact.html" class="pricing-button">Get Started</a>
+                        </div>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">Enterprise</h3>
+                            <div class="pricing-price" id="enterprise-price">
+                                <span class="currency">$</span>999<span class="period">/month</span>
+                            </div>
+                            <p class="pricing-description">Comprehensive solution for high-volume shippers</p>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Unlimited shipments</li>
+                                <li><i class="fas fa-check"></i> Premium tracking with notifications</li>
+                                <li><i class="fas fa-check"></i> Expert customs handling</li>
+                                <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+                                <li><i class="fas fa-check"></i> Priority handling & rush options</li>
+                                <li><i class="fas fa-check"></i> Dedicated logistics consultant</li>
+                                <li><i class="fas fa-check"></i> Full API integration</li>
+                            </ul>
+                            <a href="contact.html" class="pricing-button">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-quote">
+                    <h3>Need a Customized Solution?</h3>
+                    <p>Our standard packages don't fit your requirements? We offer tailored shipping solutions designed specifically for your business needs, volume, and destinations. Contact our sales team for a personalized quote.</p>
+                    <a href="contact.html" class="custom-quote-btn">Request Custom Quote</a>
+                </div>
+
+                <div class="pricing-table">
+                    <h3>Shipping Rates by Region</h3>
+                    <div class="rates-content">
+                        <div class="rates-image">
+                            <img src="image/IMG-20250416-WA0053.jpg" alt="Global Shipping Rates Map">
+                            <div class="rates-badge">
+                                <span>Best Value</span>
+                            </div>
+                        </div>
+                        <div class="rates-table">
+                            <table class="table-container">
+                                <thead>
+                                    <tr>
+                                        <th>Destination</th>
+                                        <th>Standard (3-5 days)</th>
+                                        <th>Express (1-2 days)</th>
+                                        <th>Economy (5-10 days)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>North America</td>
+                                        <td>$15 - $25 per kg</td>
+                                        <td>$30 - $45 per kg</td>
+                                        <td>$8 - $12 per kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Europe</td>
+                                        <td>$18 - $28 per kg</td>
+                                        <td>$35 - $50 per kg</td>
+                                        <td>$10 - $15 per kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Asia</td>
+                                        <td>$20 - $30 per kg</td>
+                                        <td>$40 - $55 per kg</td>
+                                        <td>$12 - $18 per kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Australia/Oceania</td>
+                                        <td>$22 - $32 per kg</td>
+                                        <td>$45 - $60 per kg</td>
+                                        <td>$15 - $20 per kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>South America</td>
+                                        <td>$19 - $29 per kg</td>
+                                        <td>$38 - $52 per kg</td>
+                                        <td>$11 - $16 per kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Africa</td>
+                                        <td>$24 - $35 per kg</td>
+                                        <td>$48 - $65 per kg</td>
+                                        <td>$16 - $22 per kg</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="rates-note">* Rates are indicative and subject to change based on specific shipping requirements, dimensions, and current fuel surcharges.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <div class="faq-img">
+                        <img src="image/IMG-20250416-WA0039.jpg" alt="Shipping Pricing FAQ">
+                    </div>
+                    <div class="faq-content">
+                        <h2>Frequently Asked Questions</h2>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>How are shipping costs calculated?</h3>
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Shipping costs are determined by several factors including weight, dimensions, distance, service level, and any special handling requirements. We use dimensional weight pricing (calculating the space a package occupies in relation to its actual weight) for most shipments.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>Do you offer discounts for regular shipments?</h3>
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Yes, we offer volume discounts for businesses with regular shipping needs. Our Enterprise plan is designed for high-volume shippers, and we can also create custom pricing plans tailored to your specific shipping patterns and requirements.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>Are there any hidden fees I should be aware of?</h3>
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>We pride ourselves on transparent pricing. Our quotes include all standard shipping costs, but additional fees may apply for special services like dangerous goods handling, residential delivery, weekend/holiday delivery, or customs duties and taxes for international shipments.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>Can I change my plan or service level?</h3>
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Absolutely! You can upgrade, downgrade, or adjust your service plan at any time. Changes typically take effect at the start of the next billing cycle. Contact our customer service team to discuss the best options for your evolving needs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-section">
+                    <h2>What Our Customers Say</h2>
+                    <div class="testimonial-slider">
+                        <div class="testimonial-slide">
+                            <div class="testimonial-content">
+                                <p>"Global Shipping Solutions has transformed our logistics operations. Their Business plan gave us the perfect balance of service and cost, and their tracking system is phenomenal. We've seen a 30% reduction in shipping delays since switching."</p>
+                                <div class="testimonial-author">
+                                    <strong>Michael Roberts</strong><br>
+                                    <span>Operations Manager, TechGadgets Inc.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-content">
+                                <p>"As a small business, we needed flexible shipping options that wouldn't break the bank. The Starter plan has been perfect for our growing needs, and their customer service team is always available to help with any questions."</p>
+                                <div class="testimonial-author">
+                                    <strong>Sophia Chen</strong><br>
+                                    <span>Founder, Artisan Crafts</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-content">
+                                <p>"Our custom Enterprise plan has given us complete visibility into our global supply chain. The dedicated account manager understands our business and continuously finds ways to optimize our shipping network. Invaluable partnership."</p>
+                                <div class="testimonial-author">
+                                    <strong>James Peterson</strong><br>
+                                    <span>Logistics Director, Global Manufacturing Co.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-controls">
+                        <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Global Shipping</h3>
+                <p>Founded in 1995, Global Shipping Solutions provides reliable and efficient shipping services worldwide, connecting businesses across continents with innovative logistics solutions.</p>
+                <div class="social-links">
+                    <a href="#" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="services.html#ocean">Ocean Freight</a></li>
+                    <li><a href="services.html#air">Air Freight</a></li>
+                    <li><a href="services.html#ground">Ground Shipping</a></li>
+                    <li><a href="services.html#warehousing">Warehousing</a></li>
+                    <li><a href="services.html#customs">Customs Clearance</a></li>
+                    <li><a href="services.html#supply-chain">Supply Chain Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                    <li><a href="mailto:info@globalshipping.com"><i class="fas fa-envelope"></i> info@globalshipping.com</a></li>
+                    <li><a href="https://maps.google.com" target="_blank"><i class="fas fa-map-marker-alt"></i> 123 Shipping Lane, Port City, PC 12345</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 8:00AM - 6:00PM</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="back-to-top" id="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Global Shipping Solutions. All rights reserved | <a href="privacy.html" style="color: #3498db; text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: #3498db; text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Pricing toggle functionality
+        const pricingToggle = document.getElementById('pricing-toggle');
+        const monthlyLabel = document.getElementById('monthly-label');
+        const yearlyLabel = document.getElementById('yearly-label');
+        const basicPrice = document.getElementById('basic-price');
+        const businessPrice = document.getElementById('business-price');
+        const enterprisePrice = document.getElementById('enterprise-price');
+
+        let isYearly = false;
+
+        pricingToggle.addEventListener('click', function() {
+            isYearly = !isYearly;
+            pricingToggle.classList.toggle('yearly');
+            monthlyLabel.classList.toggle('toggle-active');
+            yearlyLabel.classList.toggle('toggle-active');
+            
+            if (isYearly) {
+                basicPrice.innerHTML = '<span class="currency">$</span>1,910<span class="period">/year</span>';
+                businessPrice.innerHTML = '<span class="currency">$</span>4,790<span class="period">/year</span>';
+                enterprisePrice.innerHTML = '<span class="currency">$</span>9,590<span class="period">/year</span>';
+            } else {
+                basicPrice.innerHTML = '<span class="currency">$</span>199<span class="period">/month</span>';
+                businessPrice.innerHTML = '<span class="currency">$</span>499<span class="period">/month</span>';
+                enterprisePrice.innerHTML = '<span class="currency">$</span>999<span class="period">/month</span>';
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Back to top functionality
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html> 

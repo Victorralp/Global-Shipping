@@ -1,0 +1,706 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Global Shipping Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Blog Page Specific Styles */
+        .blog-banner {
+            height: 350px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('image/IMG-20250416-WA0040.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .blog-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .blog-banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .blog-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .blog-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .blog-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .blog-intro h2 {
+            font-size: 2.4rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .blog-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .blog-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid #3498db;
+            border-radius: 30px;
+            background: transparent;
+            color: #3498db;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .search-container {
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 12px 20px;
+            padding-left: 50px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.1);
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #3498db;
+            font-size: 1.2rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-img {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-img img {
+            transform: scale(1.1);
+        }
+
+        .blog-content {
+            padding: 1.8rem;
+        }
+
+        .blog-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .blog-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .blog-content p {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .blog-link {
+            display: inline-block;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .blog-link:hover {
+            color: #2980b9;
+            padding-left: 5px;
+        }
+
+        .blog-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-link:hover i {
+            transform: translateX(5px);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .author-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            margin: 0 5px;
+            color: #7f8c8d;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .pagination-btn:hover, .pagination-btn.active {
+            background-color: #3498db;
+            border-color: #3498db;
+            color: white;
+        }
+
+        .pagination-btn.prev, .pagination-btn.next {
+            width: auto;
+            padding: 0 15px;
+            border-radius: 30px;
+        }
+
+        .featured-post {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .featured-img {
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-tag {
+            display: inline-block;
+            padding: 6px 15px;
+            background-color: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .featured-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        .featured-content p {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-section {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 5rem;
+        }
+
+        .newsletter-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .newsletter-content h2 {
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #1a252f;
+        }
+
+        @media (max-width: 992px) {
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-img {
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-banner {
+                height: 250px;
+            }
+            
+            .blog-banner h1 {
+                font-size: 2.2rem;
+            }
+            
+            .blog-banner p {
+                font-size: 1rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-content {
+                padding: 2rem;
+            }
+            
+            .featured-content h3 {
+                font-size: 1.8rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 5px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <nav>
+            <div class="logo">
+                <i class="fas fa-globe-americas logo-icon"></i>
+                <h1>Global Shipping</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-banner">
+            <div class="banner-content">
+                <h1>Shipping Industry Insights</h1>
+                <p>Stay informed with the latest news, trends, and expert advice on global shipping and logistics.</p>
+            </div>
+        </section>
+
+        <section class="blog-section">
+            <div class="blog-wrapper">
+                <div class="blog-intro">
+                    <h2>Our Latest Articles</h2>
+                    <p>Explore our collection of articles covering various aspects of the shipping industry, from supply chain management to sustainability initiatives and technological innovations.</p>
+                </div>
+
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search articles...">
+                </div>
+
+                <div class="blog-filter">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Industry News</button>
+                    <button class="filter-btn">Tips & Guides</button>
+                    <button class="filter-btn">Case Studies</button>
+                    <button class="filter-btn">Technology</button>
+                    <button class="filter-btn">Sustainability</button>
+                </div>
+
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <img src="image/IMG-20250416-WA0056.jpg" alt="Sustainable Shipping">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">June 10, 2024</span>
+                            <span class="blog-category">Sustainability</span>
+                            <h3>Sustainable Shipping: How the Industry is Embracing Green Practices</h3>
+                            <p>Discover how shipping companies are implementing eco-friendly initiatives, from alternative fuels to optimized routes, to reduce their environmental footprint.</p>
+                            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <img src="image/IMG-20250416-WA0036.jpg" alt="E-commerce Shipping">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">June 5, 2024</span>
+                            <span class="blog-category">Industry News</span>
+                            <h3>E-Commerce Boom: How Retailers are Adapting Their Shipping Strategies</h3>
+                            <p>Learn how the explosive growth of online shopping has forced retailers to rethink their logistics operations and delivery expectations.</p>
+                            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <img src="image/IMG-20250416-WA0045.jpg" alt="AI in Logistics">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">May 28, 2024</span>
+                            <span class="blog-category">Technology</span>
+                            <h3>AI and Machine Learning: Revolutionizing Supply Chain Management</h3>
+                            <p>Explore how artificial intelligence and machine learning algorithms are enhancing predictive capabilities and operational efficiency in modern logistics.</p>
+                            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <img src="image/IMG-20250416-WA0041.jpg" alt="Case Study">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">May 20, 2024</span>
+                            <span class="blog-category">Case Studies</span>
+                            <h3>Case Study: How Global Electronics Manufacturer Optimized Their Shipping Network</h3>
+                            <p>Read about how a leading electronics company reduced costs by 35% and delivery times by 50% through strategic shipping network optimization.</p>
+                            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <img src="image/IMG-20250416-WA0044.jpg" alt="Customs Guide">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">May 15, 2024</span>
+                            <span class="blog-category">Tips & Guides</span>
+                            <h3>Navigating International Customs: A Guide for First-Time Exporters</h3>
+                            <p>Essential information for businesses new to international shipping, covering documentation requirements, common pitfalls, and best practices.</p>
+                            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <img src="image/IMG-20250416-WA0054.jpg" alt="Shipping Regulations">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">May 10, 2024</span>
+                            <span class="blog-category">Industry News</span>
+                            <h3>2024 Shipping Regulations Update: What You Need to Know</h3>
+                            <p>Stay informed about the latest regulatory changes in international shipping and their potential impact on your logistics operations.</p>
+                            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="featured-post">
+                    <div class="featured-img">
+                        <img src="image/IMG-20250416-WA0042.jpg" alt="Future of Shipping">
+                    </div>
+                    <div class="featured-content">
+                        <span class="featured-tag">Featured</span>
+                        <h3>The Future of Shipping: Trends and Innovations Transforming the Industry</h3>
+                        <p>Explore how emerging technologies, shifting consumer demands, and growing sustainability concerns are reshaping the global shipping landscape and creating new opportunities for businesses worldwide.</p>
+                        <span class="blog-date">June 15, 2024</span>
+                        <a href="#" class="blog-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="blog-pagination">
+                    <a href="#" class="pagination-btn prev"><i class="fas fa-chevron-left"></i> Prev</a>
+                    <a href="#" class="pagination-btn active">1</a>
+                    <a href="#" class="pagination-btn">2</a>
+                    <a href="#" class="pagination-btn">3</a>
+                    <a href="#" class="pagination-btn">...</a>
+                    <a href="#" class="pagination-btn">7</a>
+                    <a href="#" class="pagination-btn next">Next <i class="fas fa-chevron-right"></i></a>
+                </div>
+
+                <div class="newsletter-section">
+                    <div class="newsletter-content">
+                        <h2>Subscribe to Our Newsletter</h2>
+                        <p>Stay updated with our latest articles, industry insights, and company news delivered straight to your inbox.</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Enter your email address">
+                            <button type="submit">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Global Shipping</h3>
+                <p>Founded in 1995, Global Shipping Solutions provides reliable and efficient shipping services worldwide, connecting businesses across continents with innovative logistics solutions.</p>
+                <div class="social-links">
+                    <a href="#" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="services.html#ocean">Ocean Freight</a></li>
+                    <li><a href="services.html#air">Air Freight</a></li>
+                    <li><a href="services.html#ground">Ground Shipping</a></li>
+                    <li><a href="services.html#warehousing">Warehousing</a></li>
+                    <li><a href="services.html#customs">Customs Clearance</a></li>
+                    <li><a href="services.html#supply-chain">Supply Chain Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                    <li><a href="mailto:info@globalshipping.com"><i class="fas fa-envelope"></i> info@globalshipping.com</a></li>
+                    <li><a href="https://maps.google.com" target="_blank"><i class="fas fa-map-marker-alt"></i> 123 Shipping Lane, Port City, PC 12345</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 8:00AM - 6:00PM</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="back-to-top" id="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Global Shipping Solutions. All rights reserved | <a href="privacy.html" style="color: #3498db; text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: #3498db; text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Blog cards animation
+        window.addEventListener('scroll', function() {
+            const blogCards = document.querySelectorAll('.blog-card');
+            blogCards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < window.innerHeight - 100) {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Back to top functionality
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Blog filters
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // In a real implementation, this would filter the blog cards
+            });
+        });
+    </script>
+</body>
+</html> 

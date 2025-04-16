@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Global Shipping Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Enhanced header styles */
+        header {
+            background-color: rgba(30, 39, 46, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header.scrolled {
+            padding: 0;
+            background-color: rgba(20, 27, 32, 0.98);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #e6e6e6;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .nav-links li a:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a:hover::after {
+            width: 70%;
+            left: 15%;
+        }
+
+        .nav-links li a.active {
+            color: #fff;
+            background-color: rgba(52, 152, 219, 0.2);
+        }
+
+        .nav-links li a.active::after {
+            width: 70%;
+            left: 15%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: rgba(30, 39, 46, 0.98);
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+                padding: 1rem 0;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Additional styles for About page */
+        .about-hero {
+            height: 350px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('image/IMG-20250416-WA0047.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .about-section {
+            margin-bottom: 4rem;
+        }
+
+        .about-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mission-card, .vision-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .mission-card i, .vision-card i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .team-info p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        .social-links-team {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links-team a {
+            color: #3498db;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links-team a:hover {
+            color: #2980b9;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-item i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #7f8c8d;
+        }
+
+        /* Certification Styles */
+        .certifications-container {
+            margin-top: 2rem;
+        }
+        
+        .certification-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 2rem;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 2rem;
+        }
+        
+        .certification-text h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .certification-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .certification-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .certification-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .certification-list li:before {
+            content: '\f058';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #2ecc71;
+            position: absolute;
+            left: 0;
+        }
+        
+        .certification-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .certification-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        .cert-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .cert-image-item {
+            text-align: center;
+            position: relative;
+        }
+        
+        .cert-image-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #3498db;
+        }
+        
+        .cert-image-item span {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .cert-image-caption {
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .certification-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .certification-text {
+                order: 2;
+            }
+            
+            .certification-image {
+                order: 1;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #3498db;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #3498db;
+            border-radius: 50%;
+            top: 15px;
+            right: -10px;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .timeline-content p {
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0;
+            }
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1e272e;
+            color: #f1f1f1;
+            padding: 3rem 1rem 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: #3498db;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section ul li a {
+            color: #f1f1f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #3498db;
+        }
+        
+        .footer-section ul li a i {
+            margin-right: 0.5rem;
+            color: #3498db;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #2c3e50;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #3498db;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .back-to-top {
+                right: 15px;
+                bottom: 70px;
+            }
+        }
+
+        /* Company Story Section Styles */
+        .story-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .story-image {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .story-image img {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        @media (max-width: 768px) {
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-text {
+                order: 2;
+            }
+            
+            .story-image {
+                order: 1;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <nav>
+            <div class="logo">
+                <i class="fas fa-globe-americas logo-icon"></i>
+                <h1>Global Shipping</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <div class="hero-content">
+                <h1>About Global Shipping</h1>
+                <p>Your trusted partner in global logistics since 1995</p>
+            </div>
+        </section>
+
+        <div class="about-content">
+            <section class="company-story">
+                <div class="container">
+                    <div class="story-content">
+                        <div class="story-text">
+                            <h2>Our Story</h2>
+                            <p>Founded in 1995, Global Shipping Solutions began as a small family-owned freight forwarding company with just three employees and a passion for connecting businesses across borders. What started as a modest operation has grown into a leading global logistics provider with a presence in over 65 countries.</p>
+                            <p>Our journey has been defined by our unwavering commitment to reliability, innovation, and customer satisfaction. Through economic ups and downs, technological revolutions, and global challenges, we've continuously adapted and evolved to meet the changing needs of our clients.</p>
+                            <p>Today, Global Shipping Solutions employs over 2,000 logistics experts worldwide, manages a sophisticated network of transportation and warehousing resources, and leverages cutting-edge technology to provide seamless shipping experiences. Despite our growth, we remain true to our core values of integrity, excellence, and personalized service.</p>
+                        </div>
+                        <div class="story-image">
+                            <img src="image/IMG-20250416-WA0062.jpg" alt="Company History">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2>Our Mission & Vision</h2>
+                <div class="mission-vision">
+                    <div class="mission-card">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Our Mission</h3>
+                        <p>To provide reliable, efficient, and sustainable shipping solutions that connect businesses globally, enabling commerce and growth while minimizing environmental impact.</p>
+                    </div>
+                    <div class="vision-card">
+                        <i class="fas fa-eye"></i>
+                        <h3>Our Vision</h3>
+                        <p>To be the world's most trusted shipping partner, known for innovation, sustainability, and exceptional customer service in the global logistics industry.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2>Our Values</h2>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Integrity</h3>
+                        <p>We conduct business with honesty, transparency, and ethical practices.</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Customer Focus</h3>
+                        <p>Our clients' success is our success. We prioritize their needs in everything we do.</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Sustainability</h3>
+                        <p>We're committed to reducing our environmental footprint through eco-friendly practices.</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Innovation</h3>
+                        <p>We continuously seek new solutions to improve our services and efficiency.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2>Our Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>1995</h3>
+                            <p>Global Shipping Solutions founded with three employees in New York.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>2000</h3>
+                            <p>Expanded operations to Europe, opening offices in London and Frankfurt.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>2005</h3>
+                            <p>Launched our online tracking system, revolutionizing shipment visibility.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>2010</h3>
+                            <p>Established presence in Asia with new facilities in Singapore and Hong Kong.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>2015</h3>
+                            <p>Celebrated 20 years of service with over 1,000 employees worldwide.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>2020</h3>
+                            <p>Implemented sustainable shipping initiatives, reducing carbon footprint by 30%.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>2024</h3>
+                            <p>Today, serving over 10,000 clients across 150+ countries with cutting-edge logistics solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2>Our Certifications</h2>
+                <div class="certifications-container">
+                    <div class="certification-content">
+                        <div class="certification-text">
+                            <h3>Internationally Certified</h3>
+                            <p>Global Shipping Solutions is proud to maintain the highest standards in the shipping and logistics industry. Our operations are certified by leading international organizations, ensuring compliance with global standards for quality, security, and environmental responsibility.</p>
+                            <ul class="certification-list">
+                                <li><strong>ISO 9001:2015</strong> - Quality Management Systems</li>
+                                <li><strong>ISO 14001:2015</strong> - Environmental Management</li>
+                                <li><strong>ISO 28000:2007</strong> - Supply Chain Security Management</li>
+                                <li><strong>IATA Certified</strong> - For Air Freight Operations</li>
+                                <li><strong>C-TPAT Certified</strong> - Customs-Trade Partnership Against Terrorism</li>
+                            </ul>
+                        </div>
+                        <div class="certification-image">
+                            <div class="cert-image-grid">
+                                <div class="cert-image-item">
+                                    <img src="image/IMG-20250416-WA0036.jpg" alt="ISO Certification">
+                                </div>
+                                <div class="cert-image-item">
+                                    <img src="image/IMG-20250416-WA0037.jpg" alt="IATA Certification">
+                                </div>
+                                <div class="cert-image-item">
+                                    <img src="image/IMG-20250416-WA0034.jpg" alt="Environmental Certification">
+                                </div>
+                                <div class="cert-image-item">
+                                    <img src="image/IMG-20250416-WA0038.jpg" alt="Security Certification">
+                                </div>
+                            </div>
+                            <p class="cert-image-caption">Official certifications in logistics and supply chain management</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Global Shipping</h3>
+                <p>Founded in 1995, Global Shipping Solutions provides reliable and efficient shipping services worldwide, connecting businesses across continents with innovative logistics solutions.</p>
+                <div class="social-links">
+                    <a href="#" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="services.html#ocean">Ocean Freight</a></li>
+                    <li><a href="services.html#air">Air Freight</a></li>
+                    <li><a href="services.html#ground">Ground Shipping</a></li>
+                    <li><a href="services.html#warehousing">Warehousing</a></li>
+                    <li><a href="services.html#customs">Customs Clearance</a></li>
+                    <li><a href="services.html#supply-chain">Supply Chain Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                    <li><a href="mailto:info@globalshipping.com"><i class="fas fa-envelope"></i> info@globalshipping.com</a></li>
+                    <li><a href="https://maps.google.com" target="_blank"><i class="fas fa-map-marker-alt"></i> 123 Shipping Lane, Port City, PC 12345</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 8:00AM - 6:00PM</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="back-to-top" id="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Global Shipping Solutions. All rights reserved | <a href="privacy.html" style="color: #3498db; text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: #3498db; text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

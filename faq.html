@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Global Shipping Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Enhanced header styles */
+        header {
+            background-color: rgba(30, 39, 46, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header.scrolled {
+            padding: 0;
+            background-color: rgba(20, 27, 32, 0.98);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #e6e6e6;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .nav-links li a:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a:hover::after {
+            width: 70%;
+            left: 15%;
+        }
+
+        .nav-links li a.active {
+            color: #fff;
+            background-color: rgba(52, 152, 219, 0.2);
+        }
+
+        .nav-links li a.active::after {
+            width: 70%;
+            left: 15%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: rgba(30, 39, 46, 0.98);
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+                padding: 1rem 0;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Enhanced Footer Styles */
+        footer {
+            background: linear-gradient(to bottom, #2c3e50, #1a252f);
+            color: #ecf0f1;
+            padding-top: 3rem;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem 2rem;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+
+        .footer-section p {
+            color: #bdc3c7;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section ul li a::before {
+            content: "\f105";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 10px;
+            color: #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        .footer-section ul li a:hover::before {
+            color: #2ecc71;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ecf0f1;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .social-links a.facebook:hover {
+            background-color: #3b5998;
+        }
+
+        .social-links a.twitter:hover {
+            background-color: #1da1f2;
+        }
+
+        .social-links a.linkedin:hover {
+            background-color: #0077b5;
+        }
+
+        .social-links a.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: #95a5a6;
+        }
+
+        .back-to-top {
+            position: absolute;
+            right: 30px;
+            bottom: 80px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .back-to-top {
+                right: 15px;
+                bottom: 70px;
+            }
+        }
+
+        /* Add padding to the main content to prevent it from being hidden under fixed header */
+        main {
+            padding-top: 80px;
+        }
+
+        /* Additional styles for FAQ page */
+        .faq-hero {
+            height: 350px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('image/IMG-20250416-WA0050.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .faq-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .faq-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-intro h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .faq-intro p {
+            color: #7f8c8d;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-search {
+            position: relative;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .faq-search input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            padding-left: 3rem;
+            border: 2px solid #e6e6e6;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-search input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .faq-search i {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+        }
+
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-button {
+            padding: 0.7rem 1.5rem;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 30px;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-button:hover, .category-button.active {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .faq-accordion {
+            margin-bottom: 3rem;
+        }
+
+        .accordion-item {
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #f8f9fa;
+        }
+
+        .accordion-header h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .accordion-icon {
+            color: #3498db;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: #fff;
+        }
+
+        .accordion-content p {
+            color: #7f8c8d;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .accordion-content ul {
+            color: #7f8c8d;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .accordion-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .accordion-item.active .accordion-header {
+            background-color: #f8f9fa;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+            padding: 1.5rem;
+            padding-top: 0;
+        }
+
+        .still-have-questions {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+        }
+
+        .still-have-questions h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .still-have-questions p {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            background-color: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            .contact-options {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <nav>
+            <div class="logo">
+                <i class="fas fa-globe-americas logo-icon"></i>
+                <h1>Global Shipping</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="faq-hero">
+            <div class="hero-content">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about our shipping services</p>
+            </div>
+        </section>
+
+        <div class="faq-content">
+            <section class="faq-intro">
+                <h2>How Can We Help You?</h2>
+                <p>We've compiled answers to the most commonly asked questions about our shipping services. If you can't find what you're looking for, please don't hesitate to contact our customer support team.</p>
+                
+                <div class="faq-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="faq-search-input" placeholder="Search for questions...">
+                </div>
+                
+                <div class="faq-categories">
+                    <button class="category-button active" data-category="all">All</button>
+                    <button class="category-button" data-category="general">General</button>
+                    <button class="category-button" data-category="shipping">Shipping</button>
+                    <button class="category-button" data-category="tracking">Tracking</button>
+                    <button class="category-button" data-category="customs">Customs</button>
+                    <button class="category-button" data-category="payments">Payments</button>
+                </div>
+            </section>
+
+            <section class="faq-accordion">
+                <!-- General FAQs -->
+                <div class="accordion-item" data-category="general">
+                    <div class="accordion-header">
+                        <h3>What is Global Shipping Solutions?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Global Shipping Solutions is a comprehensive logistics provider offering a wide range of shipping services for businesses and individuals. Founded in 1995, we specialize in international freight, domestic delivery, and supply chain management. Our mission is to provide reliable, efficient, and cost-effective shipping solutions that connect businesses globally.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="general">
+                    <div class="accordion-header">
+                        <h3>What areas do you service?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Global Shipping Solutions operates worldwide with coverage in over 150 countries across 6 continents. We have major hubs in North America, Europe, Asia, Australia, South America, and Africa. Whether you need to ship locally or internationally, we have the network and expertise to deliver your goods safely and efficiently.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="general">
+                    <div class="accordion-header">
+                        <h3>How do I get started with your services?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Getting started with Global Shipping Solutions is easy:</p>
+                        <ol>
+                            <li>Visit our <a href="contact.html">Contact page</a> or call our customer service team to discuss your shipping needs.</li>
+                            <li>Request a quote based on your specific requirements.</li>
+                            <li>Create an account on our platform for easy shipment booking and tracking.</li>
+                            <li>Schedule your first pickup or bring your packages to any of our drop-off locations.</li>
+                        </ol>
+                        <p>Our team will guide you through the process and help you choose the most suitable services for your needs.</p>
+                    </div>
+                </div>
+                
+                <!-- Shipping FAQs -->
+                <div class="accordion-item" data-category="shipping">
+                    <div class="accordion-header">
+                        <h3>What shipping methods do you offer?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We offer a variety of shipping methods to meet different needs and budgets:</p>
+                        <ul>
+                            <li><strong>Ocean Freight</strong>: FCL (Full Container Load) and LCL (Less than Container Load) options for cost-effective international shipping.</li>
+                            <li><strong>Air Freight</strong>: Express and standard air shipping for time-sensitive deliveries worldwide.</li>
+                            <li><strong>Ground Transportation</strong>: Truck and rail options for domestic and cross-border shipping.</li>
+                            <li><strong>Specialized Services</strong>: Temperature-controlled shipping, hazardous materials handling, and oversized cargo transportation.</li>
+                        </ul>
+                        <p>Our logistics experts can help you determine the best method based on your timeline, budget, and cargo specifications.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="shipping">
+                    <div class="accordion-header">
+                        <h3>How long will my shipment take to arrive?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Delivery times vary depending on the shipping method, origin, destination, and any customs clearance requirements. Here are general timeframes:</p>
+                        <ul>
+                            <li><strong>Domestic Ground Shipping</strong>: 1-5 business days</li>
+                            <li><strong>International Air Freight</strong>: 3-10 business days</li>
+                            <li><strong>International Ocean Freight</strong>: 15-45 business days</li>
+                            <li><strong>Express Shipping</strong>: 1-3 business days (depending on destination)</li>
+                        </ul>
+                        <p>For a more accurate estimate, please use our shipping calculator or contact customer service with your specific details.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="shipping">
+                    <div class="accordion-header">
+                        <h3>What items are prohibited from shipping?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>While the exact list varies by country and shipping method, generally prohibited items include:</p>
+                        <ul>
+                            <li>Illegal substances and narcotics</li>
+                            <li>Weapons, ammunition, and explosives</li>
+                            <li>Flammable materials (unless shipped as declared hazardous goods)</li>
+                            <li>Perishable goods (without proper refrigeration)</li>
+                            <li>Live animals (except through specialized services)</li>
+                            <li>Human remains</li>
+                            <li>Counterfeit goods</li>
+                            <li>Currency and high-value items without proper insurance</li>
+                        </ul>
+                        <p>Please consult our detailed prohibited items list or contact customer service if you're unsure about a specific item.</p>
+                    </div>
+                </div>
+                
+                <!-- Tracking FAQs -->
+                <div class="accordion-item" data-category="tracking">
+                    <div class="accordion-header">
+                        <h3>How do I track my shipment?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Tracking your shipment is easy with Global Shipping Solutions:</p>
+                        <ol>
+                            <li>Visit our homepage and enter your tracking number in the tracking box.</li>
+                            <li>Log in to your account dashboard to view all your active shipments.</li>
+                            <li>Use our mobile app for on-the-go tracking.</li>
+                            <li>Sign up for automated email or SMS updates for real-time status changes.</li>
+                        </ol>
+                        <p>Our tracking system provides detailed information including current location, estimated delivery date, and any customs status updates.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="tracking">
+                    <div class="accordion-header">
+                        <h3>What if my tracking information hasn't updated?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Tracking information may sometimes experience delays in updating for several reasons:</p>
+                        <ul>
+                            <li>Packages in transit between scanning facilities</li>
+                            <li>System delays in information transfer</li>
+                            <li>Customs inspection periods</li>
+                            <li>Weather or logistical delays</li>
+                        </ul>
+                        <p>If your tracking hasn't updated for more than 48 hours, please contact our customer service team for assistance. We can provide more detailed information about your shipment's status.</p>
+                    </div>
+                </div>
+                
+                <!-- Customs FAQs -->
+                <div class="accordion-item" data-category="customs">
+                    <div class="accordion-header">
+                        <h3>How do customs and duties work for international shipments?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>International shipments are subject to customs clearance, which may include duties and taxes:</p>
+                        <ul>
+                            <li>Customs duties are taxes imposed by a country on imported goods.</li>
+                            <li>Rates vary based on the product type, country of origin, and destination country's regulations.</li>
+                            <li>Most countries have de minimis thresholds below which no duties are charged.</li>
+                            <li>The recipient is typically responsible for paying duties and taxes unless you choose our DDP (Delivered Duty Paid) option.</li>
+                        </ul>
+                        <p>Our customs brokerage service can help navigate complex customs requirements, prepare documentation, and in some cases, pre-pay duties to streamline the delivery process.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="customs">
+                    <div class="accordion-header">
+                        <h3>What documents are required for international shipping?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>For international shipments, you'll typically need the following documents:</p>
+                        <ul>
+                            <li><strong>Commercial Invoice</strong>: Details of the goods, their value, and the transaction</li>
+                            <li><strong>Packing List</strong>: Itemized list of the package contents</li>
+                            <li><strong>Certificate of Origin</strong>: Document certifying where the goods were manufactured</li>
+                            <li><strong>Customs Declaration Form</strong>: Official form declaring the nature of the shipment</li>
+                            <li><strong>Special Permits/Licenses</strong>: For restricted items (if applicable)</li>
+                        </ul>
+                        <p>Additional documents may be required depending on the product type and destination country. Our team can provide guidance on specific requirements for your shipment.</p>
+                    </div>
+                </div>
+                
+                <!-- Payments FAQs -->
+                <div class="accordion-item" data-category="payments">
+                    <div class="accordion-header">
+                        <h3>What payment methods do you accept?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We accept a variety of payment methods for your convenience:</p>
+                        <ul>
+                            <li>Credit and debit cards (Visa, Mastercard, American Express)</li>
+                            <li>Bank transfers</li>
+                            <li>PayPal</li>
+                            <li>Corporate accounts with invoicing options</li>
+                            <li>Prepaid shipping accounts</li>
+                        </ul>
+                        <p>For business customers with regular shipping needs, we offer net-30 payment terms upon credit approval.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item" data-category="payments">
+                    <div class="accordion-header">
+                        <h3>How are shipping costs calculated?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Shipping costs are calculated based on several factors:</p>
+                        <ul>
+                            <li><strong>Dimensional Weight</strong>: The package's volume (length × width × height)</li>
+                            <li><strong>Actual Weight</strong>: The physical weight of the package</li>
+                            <li><strong>Distance</strong>: How far the shipment is traveling</li>
+                            <li><strong>Service Level</strong>: Express or standard delivery options</li>
+                            <li><strong>Special Handling</strong>: Requirements like temperature control or hazardous materials</li>
+                            <li><strong>Fuel Surcharges</strong>: Additional fees based on current fuel prices</li>
+                        </ul>
+                        <p>We charge based on either the dimensional weight or actual weight, whichever is greater. For an accurate quote, please use our online calculator or contact our sales team.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" data-category="payments">
+                    <div class="accordion-header">
+                        <h3>Do you offer shipping insurance?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, we offer shipping insurance to protect your goods against loss or damage during transit:</p>
+                        <ul>
+                            <li>Basic coverage is included for shipments up to $100 in value.</li>
+                            <li>Additional insurance can be purchased for higher-value shipments.</li>
+                            <li>Coverage rates are typically 1-3% of the declared value, depending on the goods and route.</li>
+                            <li>Claims must be filed within 30 days of the scheduled delivery date.</li>
+                        </ul>
+                        <p>We strongly recommend insurance for all high-value or critical shipments. Our team can help you determine the right level of coverage for your needs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="still-have-questions">
+                <h2>Still Have Questions?</h2>
+                <p>Can't find the answer you're looking for? Please contact our customer support team for assistance with any questions or concerns.</p>
+                
+                <div class="contact-options">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>Get a response within 24 hours</p>
+                        <a href="mailto:support@globalshipping.com">Send Email</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Call Us</h3>
+                        <p>Available 24/7 for urgent matters</p>
+                        <a href="tel:+18001234567">+1 (800) 123-4567</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>Live Chat</h3>
+                        <p>Chat with our support team</p>
+                        <a href="#" id="live-chat-button">Start Chat</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Global Shipping</h3>
+                <p>Founded in 1995, Global Shipping Solutions provides reliable and efficient shipping services worldwide, connecting businesses across continents with innovative logistics solutions.</p>
+                <div class="social-links">
+                    <a href="#" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="services.html#ocean">Ocean Freight</a></li>
+                    <li><a href="services.html#air">Air Freight</a></li>
+                    <li><a href="services.html#ground">Ground Shipping</a></li>
+                    <li><a href="services.html#warehousing">Warehousing</a></li>
+                    <li><a href="services.html#customs">Customs Clearance</a></li>
+                    <li><a href="services.html#supply-chain">Supply Chain Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                    <li><a href="mailto:info@globalshipping.com"><i class="fas fa-envelope"></i> info@globalshipping.com</a></li>
+                    <li><a href="https://maps.google.com" target="_blank"><i class="fas fa-map-marker-alt"></i> 123 Shipping Lane, Port City, PC 12345</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 8:00AM - 6:00PM</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="back-to-top" id="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Global Shipping Solutions. All rights reserved | <a href="privacy.html" style="color: #3498db; text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: #3498db; text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // FAQ Category Filtering
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                document.querySelectorAll('.category-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+
+                // Filter items
+                const category = button.getAttribute('data-category');
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // FAQ Search Functionality
+        document.getElementById('faq-search-input').addEventListener('keyup', () => {
+            const searchTerm = document.getElementById('faq-search-input').value.toLowerCase();
+            
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                const questionText = item.querySelector('h3').textContent.toLowerCase();
+                const answerText = item.querySelector('.accordion-content').textContent.toLowerCase();
+                
+                if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Live Chat Button Mock Function
+        document.getElementById('live-chat-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Live chat feature coming soon! Please contact us by email or phone for now.');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Back to top functionality
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html> 

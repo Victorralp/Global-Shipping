@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Global Shipping Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-banner {
+            height: 350px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('image/IMG-20250416-WA0063.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .contact-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .contact-banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .contact-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-intro h2 {
+            font-size: 2.4rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .contact-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .contact-form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .submit-btn {
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-heading {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        .info-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: #3498db;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-text h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .info-text p, .info-text a {
+            color: #7f8c8d;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .info-text a:hover {
+            color: #3498db;
+        }
+
+        .social-links-contact {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links-contact a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3498db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links-contact a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            margin-top: 5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            height: 450px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .office-hours {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 10px;
+            margin: 5rem 0;
+        }
+
+        .hours-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hours-content h2 {
+            font-size: 2.4rem;
+            margin-bottom: 2rem;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .hours-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hours-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .hours-item p {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-banner {
+                height: 250px;
+            }
+            
+            .contact-banner h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-banner p {
+                font-size: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form-container, 
+            .contact-info {
+                padding: 2rem;
+            }
+            
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <nav>
+            <div class="logo">
+                <i class="fas fa-globe-americas logo-icon"></i>
+                <h1>Global Shipping</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-banner">
+            <div class="banner-content">
+                <h1>Contact Us</h1>
+                <p>Have questions or ready to get started? Our team is here to help with all your shipping and logistics needs.</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="contact-wrapper">
+                <div class="contact-intro">
+                    <h2>Get in Touch</h2>
+                    <p>Whether you need a shipping quote, have questions about our services, or want to discuss your logistics requirements, we're eager to hear from you. Reach out to us through any of the methods below.</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name*</label>
+                                    <input type="text" id="first-name" name="first-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name*</label>
+                                    <input type="text" id="last-name" name="last-name" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address*</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company Name</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service of Interest*</label>
+                                <select id="service" name="service" required>
+                                    <option value="" selected disabled>Select a service</option>
+                                    <option value="ocean-freight">Ocean Freight</option>
+                                    <option value="air-freight">Air Freight</option>
+                                    <option value="ground-shipping">Ground Shipping</option>
+                                    <option value="warehousing">Warehousing & Distribution</option>
+                                    <option value="customs-clearance">Customs Clearance</option>
+                                    <option value="supply-chain">Supply Chain Solutions</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message*</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3 class="info-heading">Contact Information</h3>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-text">
+                                    <h4>Main Office</h4>
+                                    <p>123 Shipping Lane<br>Port City, PC 12345<br>United States</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="info-text">
+                                    <h4>Phone</h4>
+                                    <a href="tel:+15551234567">+1 (555) 123-4567</a><br>
+                                    <p>Mon-Fri: 8:00AM - 6:00PM</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="info-text">
+                                    <h4>Email</h4>
+                                    <a href="mailto:info@globalshipping.com">info@globalshipping.com</a><br>
+                                    <a href="mailto:support@globalshipping.com">support@globalshipping.com</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div class="info-text">
+                                    <h4>Customer Support</h4>
+                                    <p>24/7 support for tracking<br>and urgent inquiries</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-bottom: 1rem; color: #2c3e50;">Connect With Us</h4>
+                        <div class="social-links-contact">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059353029!2d-74.25986548248684!3d40.697149419326095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1610123456789!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="office-hours">
+                    <div class="hours-content">
+                        <h2>Global Offices</h2>
+                        <p>With offices and representatives across the globe, we provide comprehensive shipping solutions worldwide. Contact our nearest location for personalized service.</p>
+                        
+                        <div class="hours-grid">
+                            <div class="hours-item">
+                                <i class="fas fa-map-marker-alt" style="font-size: 24px; margin-bottom: 15px; color: #fff;"></i>
+                                <h3>North America</h3>
+                                <p><strong>New York</strong><br>123 Shipping Lane<br>Port City, PC 12345<br>+1 (555) 123-4567</p>
+                            </div>
+                            <div class="hours-item">
+                                <i class="fas fa-map-marker-alt" style="font-size: 24px; margin-bottom: 15px; color: #fff;"></i>
+                                <h3>Europe</h3>
+                                <p><strong>London</strong><br>45 Maritime Street<br>London, LN4 8TK<br>+44 20 7123 4567</p>
+                            </div>
+                            <div class="hours-item">
+                                <i class="fas fa-map-marker-alt" style="font-size: 24px; margin-bottom: 15px; color: #fff;"></i>
+                                <h3>Asia</h3>
+                                <p><strong>Singapore</strong><br>78 Harbor View<br>Singapore, 123456<br>+65 6123 4567</p>
+                            </div>
+                            <div class="hours-item">
+                                <i class="fas fa-map-marker-alt" style="font-size: 24px; margin-bottom: 15px; color: #fff;"></i>
+                                <h3>Australia</h3>
+                                <p><strong>Sydney</strong><br>90 Port Avenue<br>Sydney, NSW 2000<br>+61 2 9123 4567</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Global Shipping</h3>
+                <p>Founded in 1995, Global Shipping Solutions provides reliable and efficient shipping services worldwide, connecting businesses across continents with innovative logistics solutions.</p>
+                <div class="social-links">
+                    <a href="#" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="services.html#ocean">Ocean Freight</a></li>
+                    <li><a href="services.html#air">Air Freight</a></li>
+                    <li><a href="services.html#ground">Ground Shipping</a></li>
+                    <li><a href="services.html#warehousing">Warehousing</a></li>
+                    <li><a href="services.html#customs">Customs Clearance</a></li>
+                    <li><a href="services.html#supply-chain">Supply Chain Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                    <li><a href="mailto:info@globalshipping.com"><i class="fas fa-envelope"></i> info@globalshipping.com</a></li>
+                    <li><a href="https://maps.google.com" target="_blank"><i class="fas fa-map-marker-alt"></i> 123 Shipping Lane, Port City, PC 12345</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 8:00AM - 6:00PM</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="back-to-top" id="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Global Shipping Solutions. All rights reserved | <a href="privacy.html" style="color: #3498db; text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: #3498db; text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Form validation and submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, you would send the form data to a server
+            // For now, we'll just show a success message
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! We will get back to you shortly.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Back to top functionality
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html> 
