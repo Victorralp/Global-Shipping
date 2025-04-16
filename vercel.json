@@ -1,23 +1,16 @@
 {
-  "version": 2,
-  "name": "global-shipping",
-  "builds": [
-    { "src": "*.html", "use": "@vercel/static" }
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" }
   ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/$1" },
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+  "redirects": [
+    { "source": "/old", "destination": "/new", "permanent": true }
   ],
   "headers": [
     {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "s-maxage=1, stale-while-revalidate" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" }
-      ]
+      "source": "/",
+      "headers": [{ "key": "X-Custom-Header", "value": "MyValue" }]
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
