@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li><a href="services.html">Services</a></li>
                             <li><a href="pricing.html">Pricing</a></li>
                             <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="blog.html">Blog</a></li>
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                         <div class="mobile-menu">
