@@ -6,145 +6,9 @@
     <title>About Us - Global Shipping Solutions</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="header.js" defer></script>
     <style>
-        /* Enhanced header styles */
-        header {
-            background-color: rgba(30, 39, 46, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            padding: 0.2rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        header.scrolled {
-            padding: 0;
-            background-color: rgba(20, 27, 32, 0.98);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0.8rem 2rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-icon {
-            margin-right: 10px;
-            font-size: 2rem;
-            background: linear-gradient(135deg, #3498db, #2ecc71);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, #3498db, #2ecc71);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 0.5rem;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .nav-links li a {
-            position: relative;
-            transition: all 0.3s ease;
-            padding: 0.6rem 1rem;
-            border-radius: 6px;
-            font-weight: 500;
-            color: #e6e6e6;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            display: inline-block;
-        }
-
-        .nav-links li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: linear-gradient(90deg, #3498db, #2ecc71);
-            transition: all 0.3s ease;
-            border-radius: 10px;
-        }
-
-        .nav-links li a:hover {
-            color: #fff;
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .nav-links li a:hover::after {
-            width: 70%;
-            left: 15%;
-        }
-
-        .nav-links li a.active {
-            color: #fff;
-            background-color: rgba(52, 152, 219, 0.2);
-        }
-
-        .nav-links li a.active::after {
-            width: 70%;
-            left: 15%;
-            background: linear-gradient(90deg, #3498db, #2ecc71);
-        }
-
-        .mobile-menu {
-            display: none;
-            cursor: pointer;
-            color: #fff;
-            font-size: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                background-color: rgba(30, 39, 46, 0.98);
-                transition: all 0.3s ease;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-                padding: 1rem 0;
-                z-index: 999;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-        }
-
-        /* Additional styles for About page */
+        /* About page specific styles */
         .about-hero {
             height: 350px;
             background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('image/IMG-20250416-WA0047.jpg');
@@ -181,23 +45,62 @@
 
         .mission-vision {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .mission-card, .vision-card {
             background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .mission-card i, .vision-card i {
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon i {
             font-size: 2.5rem;
-            color: #3498db;
+            color: white;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card-content h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card-content p {
+            color: #34495e;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin: 0;
         }
 
         .team-grid {
@@ -287,7 +190,7 @@
             color: #7f8c8d;
         }
 
-        /* Certification Styles */
+        /* Certification section improvements */
         .certifications-container {
             margin-top: 2rem;
         }
@@ -302,11 +205,18 @@
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             overflow: hidden;
             padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .certification-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
         }
         
         .certification-text h3 {
             color: #2c3e50;
             margin-bottom: 1rem;
+            font-size: 1.8rem;
         }
         
         .certification-text p {
@@ -324,6 +234,11 @@
             position: relative;
             padding-left: 2rem;
             margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .certification-list li:hover {
+            transform: translateX(5px);
         }
         
         .certification-list li:before {
@@ -356,6 +271,8 @@
         .cert-image-item {
             text-align: center;
             position: relative;
+            overflow: hidden;
+            border-radius: 8px;
         }
         
         .cert-image-item img {
@@ -364,6 +281,11 @@
             object-fit: cover;
             border-radius: 8px;
             border: 2px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        
+        .cert-image-item:hover img {
+            transform: scale(1.05);
         }
         
         .cert-image-item span {
@@ -380,9 +302,23 @@
             color: #7f8c8d;
         }
         
+        @media (max-width: 992px) {
+            .certification-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            .certification-text h3 {
+                font-size: 1.6rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .certification-content {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
             }
             
             .certification-text {
@@ -391,25 +327,110 @@
             
             .certification-image {
                 order: 1;
-                margin-bottom: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .certification-text h3 {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+            
+            .cert-image-grid {
+                gap: 0.8rem;
+            }
+            
+            .cert-image-item img {
+                height: 120px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .certification-content {
+                padding: 1.2rem;
+            }
+            
+            .certification-text h3 {
+                font-size: 1.3rem;
+            }
+            
+            .certification-text p {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+            
+            .certification-list li {
+                font-size: 0.9rem;
+                padding-left: 1.8rem;
+            }
+            
+            .cert-image-item img {
+                height: 100px;
+            }
+            
+            .cert-image-caption {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 384px) {
+            .certification-content {
+                padding: 1rem;
+            }
+            
+            .certification-text h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .certification-text p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+                margin-bottom: 0.8rem;
+            }
+            
+            .certification-list li {
+                font-size: 0.85rem;
+                padding-left: 1.5rem;
+                margin-bottom: 0.3rem;
+                padding-top: 0.3rem;
+                padding-bottom: 0.3rem;
+            }
+            
+            .certification-list li:before {
+                font-size: 0.9rem;
+            }
+            
+            .cert-image-grid {
+                gap: 0.5rem;
+            }
+            
+            .cert-image-item img {
+                height: 90px;
+            }
+            
+            .cert-image-caption {
+                font-size: 0.8rem;
+                margin-top: 0.5rem;
             }
         }
 
+        /* Timeline improvements */
         .timeline {
             position: relative;
-            max-width: 800px;
-            margin: 2rem auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
         }
 
         .timeline::after {
             content: '';
             position: absolute;
-            width: 2px;
+            width: 6px;
             background-color: #3498db;
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -1px;
+            margin-left: -3px;
         }
 
         .timeline-item {
@@ -428,6 +449,9 @@
             border-radius: 50%;
             top: 15px;
             right: -10px;
+            border: 4px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1;
         }
 
         .left {
@@ -447,6 +471,13 @@
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
         }
 
         .timeline-content h3 {
@@ -475,6 +506,78 @@
 
             .right {
                 left: 0;
+            }
+            
+            .timeline-content {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .timeline::after {
+                left: 21px;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
+                padding-right: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .timeline-item::after {
+                left: 11px;
+                width: 15px;
+                height: 15px;
+            }
+            
+            .timeline-content {
+                padding: 12px;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .timeline-content p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 384px) {
+            .timeline {
+                padding: 10px 0;
+            }
+            
+            .timeline::after {
+                left: 15px;
+                width: 4px;
+            }
+            
+            .timeline-item {
+                padding-left: 40px;
+                padding-right: 10px;
+                margin-bottom: 15px;
+            }
+            
+            .timeline-item::after {
+                left: 6px;
+                width: 12px;
+                height: 12px;
+                border-width: 3px;
+            }
+            
+            .timeline-content {
+                padding: 10px;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .timeline-content p {
+                font-size: 0.8rem;
+                line-height: 1.4;
             }
         }
 
@@ -625,176 +728,1144 @@
         }
 
         /* Company Story Section Styles */
-        .story-content {
+        .story-section {
             display: grid;
-            grid-template-columns: 3fr 2fr;
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .story-text {
+            padding: 2rem;
+        }
+        
+        .story-text h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .story-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #34495e;
         }
         
         .story-image {
+            position: relative;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .story-image img {
-            max-width: 100%;
-            max-height: 350px;
-            object-fit: cover;
+            min-height: 300px;
             border-radius: 10px;
+            overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
         
-        @media (max-width: 768px) {
-            .story-content {
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .story-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 992px) {
+            .story-section {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
             .story-text {
                 order: 2;
+                padding: 1.5rem;
             }
             
             .story-image {
                 order: 1;
+                min-height: 250px;
+            }
+            
+            .story-text h2 {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                height: 300px;
+                margin-top: 60px;
+            }
+            
+            .about-content {
+                padding: 2rem 1rem;
+            }
+            
+            .story-section {
+                gap: 1.5rem;
+            }
+            
+            .story-text {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .about-hero {
+                height: 250px;
+            }
+            
+            .story-image {
+                min-height: 200px;
+            }
+            
+            .story-text p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+        }
+
+        /* Responsive Container */
+        .container {
+            width: 100%;
+            padding: 0 1rem;
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+        
+        /* Responsive adjustments for about page */
+        @media (max-width: 991px) {
+            .about-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .timeline-container {
+                margin-left: 20px;
+            }
+            
+            .timeline-item {
+                padding-left: 30px;
+            }
+            
+            .timeline-item::before {
+                left: -12px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-overview {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-overview-img {
+                height: 300px;
+            }
+            
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonial-content {
+                padding: 3rem 1.5rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .about-hero {
+                height: 300px;
+            }
+            
+            .about-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-container {
+                margin-left: 15px;
+            }
+            
+            .timeline-item {
+                padding-left: 25px;
+            }
+            
+            .testimonial-content {
+                padding: 2rem 1rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-card {
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Specific adjustments for 384px width */
+        @media (max-width: 384px) {
+            .about-hero {
+                height: 200px;
+                margin-top: 40px;
+                background-position: center;
+            }
+
+            .about-hero h1 {
+                font-size: 1.4rem;
+                padding: 0 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .about-hero p {
+                font-size: 0.8rem;
+                padding: 0 0.5rem;
+            }
+
+            .about-content {
+                padding: 1rem 0.5rem;
+            }
+
+            .story-section {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .story-text {
+                padding: 0.8rem 0.5rem;
+            }
+
+            .story-text h2 {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .story-text p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+                margin-bottom: 0.5rem;
+            }
+
+            .story-image {
+                min-height: 150px;
+                margin-bottom: 0.8rem;
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .mission-card, .vision-card {
+                padding: 1rem 0.8rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .mission-card h3, .vision-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .mission-card p, .vision-card p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+
+            .mission-card i, .vision-card i {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .stat-item {
+                padding: 1rem 0.8rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .stat-item i {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .stat-item h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .stat-item p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+
+            .timeline {
+                padding: 0 0.3rem;
+            }
+
+            .timeline-item {
+                padding: 8px 15px;
+                margin-bottom: 0.8rem;
+            }
+
+            .timeline-content {
+                padding: 0.8rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .timeline-content p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+
+            .certification-content {
+                padding: 0.8rem;
+                grid-template-columns: 1fr;
+            }
+
+            .certification-text h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .certification-text p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+                margin-bottom: 0.5rem;
+            }
+
+            .certification-list li {
+                font-size: 0.8rem;
+                margin-bottom: 0.3rem;
+                padding-left: 1.5rem;
+            }
+
+            .cert-image-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .cert-image-item img {
+                height: 100px;
+            }
+
+            .footer-content {
+                padding: 0.8rem 0.5rem;
+                grid-template-columns: 1fr;
+            }
+
+            .footer-section {
+                margin-bottom: 1rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-section p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-section ul li {
+                font-size: 0.8rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .social-links {
+                gap: 0.5rem;
+                margin-top: 0.8rem;
+            }
+
+            .social-links a {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .footer-bottom {
+                padding: 0.8rem 0;
+            }
+
+            .footer-bottom p {
+                font-size: 0.8rem;
+            }
+
+            .footer-links a {
+                font-size: 0.8rem;
+                margin: 0 0.3rem;
+            }
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                right: 10px;
+                bottom: 60px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Improved responsive design */
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .footer-sections-wrapper {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .about-hero p {
+                font-size: 1rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .team-member img {
+                height: 200px;
+            }
+            
+            .cert-image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .footer-sections-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .about-hero {
+                height: 250px;
+            }
+            
+            .about-hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .about-hero p {
+                font-size: 0.9rem;
+            }
+            
+            .story-text h2, .about-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-member {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .cert-image-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                padding: 0 0.5rem;
+            }
+            
+            .footer-sections-wrapper {
+                display: block;
+            }
+            
+            .footer-section {
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 384px) {
+            .container {
+                padding: 0 0.8rem;
+            }
+            
+            .about-hero {
+                height: 200px;
+            }
+            
+            .about-hero h1 {
+                font-size: 1.4rem;
+            }
+            
+            .about-hero p {
+                font-size: 0.8rem;
+            }
+            
+            .story-text h2, .about-section h2 {
+                font-size: 1.3rem;
+            }
+            
+            .team-member {
+                max-width: 280px;
+            }
+            
+            .team-member img {
+                height: 180px;
+            }
+            
+            .team-info {
+                padding: 1rem;
+            }
+            
+            .team-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .social-links-team a {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Fix for footer layout */
+        .footer-sections-wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        /* Comprehensive mobile responsiveness */
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .about-hero {
+                height: 220px;
+                margin-top: 60px;
+            }
+            
+            .about-hero h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .about-hero p {
+                font-size: 0.9rem;
+            }
+            
+            .about-content {
+                padding: 1.5rem 0.5rem;
+            }
+            
+            .about-section {
+                margin-bottom: 2.5rem;
+            }
+            
+            .story-section {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .story-text {
+                padding: 1rem;
+            }
+            
+            .story-text h2, .about-section h2 {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            
+            .story-text p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+            
+            .story-image {
+                min-height: 200px;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            
+            .card-icon {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 1rem;
+            }
+            
+            .card-icon i {
+                font-size: 1.8rem;
+            }
+            
+            .card-content h3 {
+                font-size: 1.3rem;
+                margin-bottom: 0.7rem;
+            }
+            
+            .card-content p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .team-member {
+                max-width: 100%;
+            }
+            
+            .team-member img {
+                height: 200px;
+            }
+            
+            .social-links-team {
+                gap: 0.8rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                padding: 1.2rem;
+            }
+            
+            .stat-item i {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .stat-item h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .cert-image-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            
+            .cert-image-item img {
+                height: 120px;
+            }
+            
+            .footer-sections-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .footer-section {
                 margin-bottom: 1.5rem;
+            }
+            
+            .social-links {
+                gap: 0.8rem;
+                justify-content: center;
+            }
+            
+            .back-to-top {
+                right: 15px;
+                bottom: 70px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        /* Small phone sizes (iPhone SE, etc.) */
+        @media screen and (max-width: 375px) {
+            .container {
+                padding: 0 0.8rem;
+            }
+            
+            .about-hero {
+                height: 180px;
+                margin-top: 50px;
+            }
+            
+            .about-hero h1 {
+                font-size: 1.3rem;
+            }
+            
+            .about-hero p {
+                font-size: 0.8rem;
+            }
+            
+            .about-content {
+                padding: 1rem 0.5rem;
+            }
+            
+            .about-section {
+                margin-bottom: 2rem;
+            }
+            
+            .story-text h2, .about-section h2 {
+                font-size: 1.2rem;
+            }
+            
+            .story-text p {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+            
+            .story-image {
+                min-height: 180px;
+            }
+            
+            .mission-vision {
+                gap: 1rem;
+            }
+            
+            .mission-card, .vision-card {
+                padding: 1rem;
+            }
+            
+            .card-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .card-icon i {
+                font-size: 1.5rem;
+            }
+            
+            .card-content h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .card-content p {
+                font-size: 0.85rem;
+            }
+            
+            .team-member img {
+                height: 180px;
+            }
+            
+            .team-info {
+                padding: 1rem;
+            }
+            
+            .team-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .stat-item {
+                padding: 1rem;
+            }
+            
+            .stat-item i {
+                font-size: 1.8rem;
+            }
+            
+            .stat-item p {
+                font-size: 0.85rem;
+            }
+            
+            .timeline-item {
+                padding-left: 40px;
+            }
+            
+            .timeline-content {
+                padding: 0.8rem;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .certification-text h3 {
+                font-size: 1.2rem;
+            }
+            
+            .certification-text p, .certification-list li {
+                font-size: 0.85rem;
+            }
+            
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+            
+            .footer-section p, .footer-section ul li {
+                font-size: 0.85rem;
+            }
+            
+            .footer-bottom p, .footer-links a {
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Extra small phones */
+        @media screen and (max-width: 320px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            .about-hero {
+                height: 160px;
+                margin-top: 40px;
+            }
+            
+            .about-hero h1 {
+                font-size: 1.1rem;
+                padding: 0 0.3rem;
+            }
+            
+            .about-hero p {
+                font-size: 0.75rem;
+                padding: 0 0.3rem;
+            }
+            
+            .about-content {
+                padding: 0.8rem 0.3rem;
+            }
+            
+            .about-section {
+                margin-bottom: 1.5rem;
+            }
+            
+            .story-text {
+                padding: 0.8rem 0.3rem;
+            }
+            
+            .story-text h2, .about-section h2 {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .story-text p {
+                font-size: 0.8rem;
+                line-height: 1.3;
+                margin-bottom: 0.5rem;
+            }
+            
+            .story-image {
+                min-height: 150px;
+            }
+            
+            .mission-card, .vision-card {
+                padding: 0.8rem;
+            }
+            
+            .card-icon {
+                width: 45px;
+                height: 45px;
+                margin-bottom: 0.8rem;
+            }
+            
+            .card-icon i {
+                font-size: 1.3rem;
+            }
+            
+            .card-content h3 {
+                font-size: 1rem;
+                margin-bottom: 0.4rem;
+            }
+            
+            .card-content p {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+            
+            .team-member img {
+                height: 160px;
+            }
+            
+            .team-info {
+                padding: 0.8rem;
+            }
+            
+            .team-info h3 {
+                font-size: 1rem;
+            }
+            
+            .team-info p {
+                font-size: 0.8rem;
+            }
+            
+            .stat-item {
+                padding: 0.8rem;
+            }
+            
+            .stat-item i {
+                font-size: 1.5rem;
+            }
+            
+            .stat-item h3 {
+                font-size: 1rem;
+            }
+            
+            .stat-item p {
+                font-size: 0.8rem;
+            }
+            
+            .timeline::after {
+                left: 12px;
+                width: 3px;
+            }
+            
+            .timeline-item {
+                padding-left: 35px;
+                padding-right: 0.5rem;
+            }
+            
+            .timeline-item::after {
+                left: 3px;
+                width: 10px;
+                height: 10px;
+                border-width: 2px;
+            }
+            
+            .timeline-content {
+                padding: 0.7rem;
+            }
+            
+            .timeline-content h3 {
+                font-size: 0.9rem;
+            }
+            
+            .timeline-content p {
+                font-size: 0.75rem;
+            }
+            
+            .certification-content {
+                padding: 0.8rem 0.5rem;
+            }
+            
+            .certification-text h3 {
+                font-size: 1rem;
+            }
+            
+            .certification-text p {
+                font-size: 0.8rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .certification-list li {
+                font-size: 0.8rem;
+                padding-left: 1.2rem;
+            }
+            
+            .cert-image-item img {
+                height: 100px;
+            }
+            
+            .footer-content {
+                padding: 0.5rem;
+            }
+            
+            .footer-section {
+                margin-bottom: 1rem;
+            }
+            
+            .footer-section h3 {
+                font-size: 1rem;
+                margin-bottom: 0.4rem;
+            }
+            
+            .footer-section p {
+                font-size: 0.8rem;
+                margin-bottom: 0.4rem;
+            }
+            
+            .footer-section ul li {
+                font-size: 0.8rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .social-links {
+                gap: 0.4rem;
+            }
+            
+            .social-links a {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+            
+            .footer-bottom {
+                padding: 0.6rem 0;
+                margin-top: 1.5rem;
+            }
+            
+            .footer-bottom p, .footer-links a {
+                font-size: 0.75rem;
+            }
+            
+            .back-to-top {
+                width: 35px;
+                height: 35px;
+                right: 8px;
+                bottom: 60px;
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <header id="main-header">
-        <nav>
-            <div class="logo">
-                <i class="fas fa-globe-americas logo-icon"></i>
-                <h1>Global Shipping</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </header>
-
     <main>
         <section class="about-hero">
-            <div class="hero-content">
+            <div class="container">
                 <h1>About Global Shipping</h1>
                 <p>Your trusted partner in global logistics since 1995</p>
             </div>
         </section>
 
         <div class="about-content">
-            <section class="company-story">
+            <section class="story-section">
+                <div class="story-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 1995, Global Shipping Solutions began as a small family-owned freight forwarding company with just three employees and a passion for connecting businesses across borders. What started as a modest operation has grown into a leading global logistics provider with a presence in over 65 countries.</p>
+                    <p>Our journey has been defined by our unwavering commitment to reliability, innovation, and customer satisfaction. Through economic ups and downs, technological revolutions, and global challenges, we've continuously adapted and evolved to meet the changing needs of our clients.</p>
+                    <p>Today, Global Shipping Solutions employs over 2,000 logistics experts worldwide, manages a sophisticated network of transportation and warehousing resources, and leverages cutting-edge technology to provide seamless shipping experiences. Despite our growth, we remain true to our core values of integrity, excellence, and personalized service.</p>
+                </div>
+                <div class="story-image">
+                    <img src="image/IMG-20250416-WA0062.jpg" alt="Global Shipping Company History">
+                </div>
+            </section>
+
+            <section class="about-section">
                 <div class="container">
-                    <div class="story-content">
-                        <div class="story-text">
-                            <h2>Our Story</h2>
-                            <p>Founded in 1995, Global Shipping Solutions began as a small family-owned freight forwarding company with just three employees and a passion for connecting businesses across borders. What started as a modest operation has grown into a leading global logistics provider with a presence in over 65 countries.</p>
-                            <p>Our journey has been defined by our unwavering commitment to reliability, innovation, and customer satisfaction. Through economic ups and downs, technological revolutions, and global challenges, we've continuously adapted and evolved to meet the changing needs of our clients.</p>
-                            <p>Today, Global Shipping Solutions employs over 2,000 logistics experts worldwide, manages a sophisticated network of transportation and warehousing resources, and leverages cutting-edge technology to provide seamless shipping experiences. Despite our growth, we remain true to our core values of integrity, excellence, and personalized service.</p>
+                    <h2>Our Mission & Vision</h2>
+                    <div class="mission-vision">
+                        <div class="mission-card">
+                            <div class="card-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Our Mission</h3>
+                                <p>To provide reliable, efficient, and sustainable shipping solutions that connect businesses globally, enabling commerce and growth while minimizing environmental impact.</p>
+                            </div>
                         </div>
-                        <div class="story-image">
-                            <img src="image/IMG-20250416-WA0062.jpg" alt="Company History">
+                        <div class="vision-card">
+                            <div class="card-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Our Vision</h3>
+                                <p>To be the world's most trusted shipping partner, known for innovation, sustainability, and exceptional customer service in the global logistics industry.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section class="about-section">
-                <h2>Our Mission & Vision</h2>
-                <div class="mission-vision">
-                    <div class="mission-card">
-                        <i class="fas fa-bullseye"></i>
-                        <h3>Our Mission</h3>
-                        <p>To provide reliable, efficient, and sustainable shipping solutions that connect businesses globally, enabling commerce and growth while minimizing environmental impact.</p>
-                    </div>
-                    <div class="vision-card">
-                        <i class="fas fa-eye"></i>
-                        <h3>Our Vision</h3>
-                        <p>To be the world's most trusted shipping partner, known for innovation, sustainability, and exceptional customer service in the global logistics industry.</p>
+                <div class="container">
+                    <h2>Our Values</h2>
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <i class="fas fa-handshake"></i>
+                            <h3>Integrity</h3>
+                            <p>We conduct business with honesty, transparency, and ethical practices.</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <h3>Customer Focus</h3>
+                            <p>Our clients' success is our success. We prioritize their needs in everything we do.</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Sustainability</h3>
+                            <p>We're committed to reducing our environmental footprint through eco-friendly practices.</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Innovation</h3>
+                            <p>We continuously seek new solutions to improve our services and efficiency.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section class="about-section">
-                <h2>Our Values</h2>
-                <div class="stats-container">
-                    <div class="stat-item">
-                        <i class="fas fa-handshake"></i>
-                        <h3>Integrity</h3>
-                        <p>We conduct business with honesty, transparency, and ethical practices.</p>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-users"></i>
-                        <h3>Customer Focus</h3>
-                        <p>Our clients' success is our success. We prioritize their needs in everything we do.</p>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-leaf"></i>
-                        <h3>Sustainability</h3>
-                        <p>We're committed to reducing our environmental footprint through eco-friendly practices.</p>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-lightbulb"></i>
-                        <h3>Innovation</h3>
-                        <p>We continuously seek new solutions to improve our services and efficiency.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="about-section">
-                <h2>Our Journey</h2>
-                <div class="timeline">
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <h3>1995</h3>
-                            <p>Global Shipping Solutions founded with three employees in New York.</p>
+                <div class="container">
+                    <h2>Our Journey</h2>
+                    <div class="timeline">
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>1995</h3>
+                                <p>Global Shipping Solutions founded with three employees in New York.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item right">
-                        <div class="timeline-content">
-                            <h3>2000</h3>
-                            <p>Expanded operations to Europe, opening offices in London and Frankfurt.</p>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h3>2000</h3>
+                                <p>Expanded operations to Europe, opening offices in London and Frankfurt.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <h3>2005</h3>
-                            <p>Launched our online tracking system, revolutionizing shipment visibility.</p>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>2005</h3>
+                                <p>Launched our online tracking system, revolutionizing shipment visibility.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item right">
-                        <div class="timeline-content">
-                            <h3>2010</h3>
-                            <p>Established presence in Asia with new facilities in Singapore and Hong Kong.</p>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h3>2010</h3>
+                                <p>Established presence in Asia with new facilities in Singapore and Hong Kong.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <h3>2015</h3>
-                            <p>Celebrated 20 years of service with over 1,000 employees worldwide.</p>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>2015</h3>
+                                <p>Celebrated 20 years of service with over 1,000 employees worldwide.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item right">
-                        <div class="timeline-content">
-                            <h3>2020</h3>
-                            <p>Implemented sustainable shipping initiatives, reducing carbon footprint by 30%.</p>
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h3>2020</h3>
+                                <p>Implemented sustainable shipping initiatives, reducing carbon footprint by 30%.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                            <h3>2024</h3>
-                            <p>Today, serving over 10,000 clients across 150+ countries with cutting-edge logistics solutions.</p>
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>2024</h3>
+                                <p>Today, serving over 10,000 clients across 150+ countries with cutting-edge logistics solutions.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -840,56 +1911,63 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>About Global Shipping</h3>
-                <p>Founded in 1995, Global Shipping Solutions provides reliable and efficient shipping services worldwide, connecting businesses across continents with innovative logistics solutions.</p>
-                <div class="social-links">
-                    <a href="#" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <div class="container">
+                <div class="footer-sections-wrapper">
+                    <div class="footer-section">
+                        <h3>About Global Shipping</h3>
+                        <p>Founded in 1995, Global Shipping Solutions provides reliable and efficient shipping services worldwide, connecting businesses across continents with innovative logistics solutions.</p>
+                        <div class="social-links">
+                            <a href="#" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Our Services</h3>
+                        <ul>
+                            <li><a href="services.html#ocean">Ocean Freight</a></li>
+                            <li><a href="services.html#air">Air Freight</a></li>
+                            <li><a href="services.html#ground">Ground Shipping</a></li>
+                            <li><a href="services.html#warehousing">Warehousing</a></li>
+                            <li><a href="services.html#customs">Customs Clearance</a></li>
+                            <li><a href="services.html#supply-chain">Supply Chain Solutions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact Info</h3>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Shipping Street, New York, NY 10001</li>
+                            <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                            <li><i class="fas fa-envelope"></i> info@globalshipping.com</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="footer-section">
-                <h3>Our Services</h3>
-                <ul>
-                    <li><a href="services.html#ocean">Ocean Freight</a></li>
-                    <li><a href="services.html#air">Air Freight</a></li>
-                    <li><a href="services.html#ground">Ground Shipping</a></li>
-                    <li><a href="services.html#warehousing">Warehousing</a></li>
-                    <li><a href="services.html#customs">Customs Clearance</a></li>
-                    <li><a href="services.html#supply-chain">Supply Chain Solutions</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <ul>
-                    <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
-                    <li><a href="mailto:info@globalshipping.com"><i class="fas fa-envelope"></i> info@globalshipping.com</a></li>
-                    <li><a href="https://maps.google.com" target="_blank"><i class="fas fa-map-marker-alt"></i> 123 Shipping Lane, Port City, PC 12345</a></li>
-                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 8:00AM - 6:00PM</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="back-to-top" id="back-to-top">
-            <i class="fas fa-arrow-up"></i>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Global Shipping Solutions. All rights reserved | <a href="privacy.html" style="color: #3498db; text-decoration: none;">Privacy Policy</a> | <a href="terms.html" style="color: #3498db; text-decoration: none;">Terms of Service</a></p>
+            <div class="container">
+                <p>&copy; 2024 Global Shipping Solutions. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
         </div>
+        <a href="#" class="back-to-top" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></a>
     </footer>
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>

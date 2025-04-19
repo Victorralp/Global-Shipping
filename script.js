@@ -1,21 +1,111 @@
 // Mobile menu functionality
-const mobileMenu = document.querySelector('.mobile-menu');
-const navLinks = document.querySelector('.nav-links');
-
-mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+    
+    if (mobileMenu && navLinks) {
+        // Toggle mobile menu
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    mobileMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768 && 
+                navLinks.classList.contains('active') && 
+                !navLinks.contains(event.target) && 
+                !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        });
+    }
 });
 
-// Header scroll effect
-window.addEventListener('scroll', function() {
-    const header = document.getElementById('main-header');
-    if (header) {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+// Header and Navigation Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+    // Set active page in navigation
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage) {
+            link.classList.add('active');
         }
+    });
+
+    // Mobile menu toggle
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
     }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (window.innerWidth <= 768 && 
+            mobileMenu && 
+            navLinks && 
+            navLinks.classList.contains('active') && 
+            !navLinks.contains(event.target) && 
+            !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.remove('active');
+            navLinks.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
+
+    // Header scroll effect
+    if (header) {
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('scrolled');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('scrolled')) {
+                header.classList.add('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 });
 
 // Back to top functionality
@@ -32,20 +122,23 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            // Close mobile menu if open
-            if (window.innerWidth <= 768) {
-                navLinks.style.display = 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Close mobile menu if open
+                const navLinks = document.querySelector('.nav-links');
+                if (window.innerWidth <= 768 && navLinks) {
+                    navLinks.classList.remove('active');
+                }
             }
-        }
+        });
     });
 });
 
@@ -189,4 +282,13 @@ document.head.appendChild(animationStyle);
 
 // Trigger animation on scroll
 window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll); 
+window.addEventListener('load', animateOnScroll);
+
+// Add styles for body overflow
+const bodyStyle = document.createElement('style');
+bodyStyle.textContent = `
+    .menu-open {
+        overflow: hidden;
+    }
+`;
+document.head.appendChild(bodyStyle);

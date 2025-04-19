@@ -29,27 +29,43 @@ header.scrolled {
     background-color: rgba(20, 27, 32, 0.98);
 }
 
+/* Container for consistent layout */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0.8rem 2rem;
+    padding: 1rem 2rem;
+    position: relative;
 }
 
 .logo {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    margin-right: auto;
+    padding: 0.5rem 0;
+    gap: 12px;
 }
 
 .logo-icon {
-    margin-right: 10px;
-    font-size: 2rem;
+    margin-right: 0;
+    font-size: 2.2rem;
     background: linear-gradient(135deg, #3498db, #2ecc71);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-icon {
+    transform: translateY(-2px);
 }
 
 .logo h1 {
@@ -61,14 +77,29 @@ nav {
     font-weight: 700;
     margin: 0;
     letter-spacing: 0.5px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover h1 {
+    transform: translateY(-1px);
+}
+
+.logo h1 a {
+    text-decoration: none;
+    color: inherit;
+    background: inherit;
+    -webkit-background-clip: inherit;
+    background-clip: inherit;
+    -webkit-text-fill-color: inherit;
 }
 
 .nav-links {
     display: flex;
-    gap: 0.5rem;
+    gap: 1.5rem;
     margin: 0;
     padding: 0;
     list-style: none;
+    margin-left: auto;
 }
 
 .nav-links li a {
@@ -80,7 +111,22 @@ nav {
     color: #e6e6e6;
     text-decoration: none;
     letter-spacing: 0.5px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links li:last-child a {
+    padding-right: 0;
+}
+
+.nav-links li a i {
+    font-size: 1.1em;
+    transition: transform 0.3s ease;
+}
+
+.nav-links li a:hover i {
+    transform: translateY(-2px);
 }
 
 .nav-links li a::after {
@@ -117,11 +163,34 @@ nav {
     background: linear-gradient(90deg, #3498db, #2ecc71);
 }
 
+/* Mobile Menu */
 .mobile-menu {
     display: none;
     cursor: pointer;
-    color: #fff;
-    font-size: 1.5rem;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.mobile-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.mobile-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* Add padding to the main content to prevent it from being hidden under fixed header */
@@ -523,51 +592,145 @@ footer {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        background-color: rgba(30, 39, 46, 0.98);
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-        padding: 1rem 0;
-        z-index: 999;
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 1.5rem;
     }
     
-    .nav-links.active {
-        left: 0;
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .nav-links li a {
+        padding: 0.5rem 0.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 0 1.2rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+    
+    .logo-icon {
+        font-size: 2rem;
+    }
+    
+    .nav-links {
+        gap: 0.8rem;
+    }
+    
+    .nav-links li a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
     }
     
     .mobile-menu {
         display: block;
     }
     
-    .footer-content {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: rgba(30, 39, 46, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 2rem 0;
+        margin: 0;
+        transition: all 0.3s ease;
+        overflow-y: auto;
     }
     
-    .back-to-top {
-        right: 15px;
-        bottom: 70px;
+    .nav-links.active {
+        left: 0;
     }
+    
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+    
+    .nav-links li a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .nav-links li a:hover {
+        transform: translateY(-3px);
+        background-color: rgba(52, 152, 219, 0.2);
+    }
+    
+    .nav-links li a.active {
+        background-color: rgba(52, 152, 219, 0.3);
+    }
+    
+    body.menu-open {
+        overflow: hidden;
+    }
+}
 
-    .hero-content h1 {
-        font-size: 2.5rem;
+@media (max-width: 576px) {
+    .container {
+        padding: 0 0.8rem;
     }
+    
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+    
+    .logo-icon {
+        font-size: 1.8rem;
+    }
+    
+    .nav-links {
+        top: 60px;
+        height: calc(100vh - 60px);
+    }
+    
+    .nav-links li a {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+}
 
-    .tracking-form {
-        flex-direction: column;
+@media (max-width: 400px) {
+    .container {
+        padding: 0 0.6rem;
     }
-
-    .contact-container {
-        grid-template-columns: 1fr;
+    
+    .logo h1 {
+        font-size: 1.2rem;
     }
-} 
+    
+    .logo-icon {
+        font-size: 1.6rem;
+        margin-right: 8px;
+    }
+    
+    .nav-links li a {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+}
 
 /* Blog Section Styles */
 .blog-section {
@@ -768,6 +931,95 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+    }
+    
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        width: 100%;
+    }
+    
+    nav {
+        position: static;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        text-align: left;
+        background-color: rgba(30, 39, 46, 0.98);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        padding: 0;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        margin-left: 0;
+    }
+    
+    .nav-links.active {
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .nav-links li {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .nav-links li a {
+        display: block;
+        padding: 1rem 2rem;
+        width: 100%;
+        font-weight: 500;
+    }
+    
+    .nav-links li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-links li a.active {
+        background-color: rgba(52, 152, 219, 0.2);
+    }
+    
+    /* Prevent scrolling when mobile menu is open */
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .back-to-top {
+        right: 15px;
+        bottom: 70px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .tracking-form {
+        flex-direction: column;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
     .blog-grid {
         grid-template-columns: 1fr;
     }
