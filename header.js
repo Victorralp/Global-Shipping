@@ -18,9 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li><a href="faq.html">FAQ</a></li>
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
-                        <button class="theme-toggle" aria-label="Toggle dark mode">
-                            <i class="fas fa-moon"></i>
-                        </button>
                         <div class="mobile-menu">
                             <span></span>
                             <span></span>
@@ -92,32 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 lastScroll = currentScroll;
-            });
-        }
-
-        // Theme Toggle
-        const themeToggle = document.querySelector('.theme-toggle');
-        if (themeToggle) {
-            const themeIcon = themeToggle.querySelector('i');
-            
-            // Check for saved theme preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-            }
-            
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                
-                if (isDarkMode) {
-                    themeIcon.classList.replace('fa-moon', 'fa-sun');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    themeIcon.classList.replace('fa-sun', 'fa-moon');
-                    localStorage.setItem('theme', 'light');
-                }
             });
         }
     };
